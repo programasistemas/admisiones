@@ -1,0 +1,302 @@
+/* Project Variables */
+
+:root {
+    --error: #e74c3c;
+    --success: #2ecc71;
+}
+
+/*=============================
+======== COMPONENTS STYLES ====
+=============================*/
+body {
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-color: #eee;
+    overflow-x: hidden;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto 600px;
+}
+
+/* Form component */
+
+.form__heading {
+    font-weight: 700;
+    margin-top: 1.5rem;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Form control component */
+.custom-form-control {
+    position: relative;
+    margin-block-end: 2.4rem;
+    width: 100%;
+}
+
+/* Styles for the inputs of the form */
+.form__input {
+    width: 100%;
+    color: currentColor;
+    padding: 1rem;
+    font-size: 1rem;
+    border: none;
+    outline: 2px solid currentColor;
+    border-radius: 0.2rem;
+}
+
+.form__input:disabled {
+    background-color: #e0e0e0;
+    outline-color: #e0e0e0;
+}
+
+/* Custom placeholder styling being */
+.input__placeholder {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1.2rem;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #000;
+    transition: top 0.1s ease, font-size 0.1s ease, left 0.1s ease,
+        padding 0.1s ease;
+}
+
+.form__input:focus ~ .input__placeholder,
+.form__input:not(:placeholder-shown) ~ .input__placeholder {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+    left: 0.4rem;
+    top: 0;
+}
+
+.form__input:disabled ~ .input__placeholder {
+    left: -0.5rem;
+    top: -1rem;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
+}
+
+.form__input:disabled {
+    background-color: #e0e0e0;
+    outline-color: #e0e0e0;
+}
+
+.form__input:disabled ~ .input__placeholder {
+    background-color: transparent;
+}
+/* Custom placeholder styling begin */
+
+/* Icons inside the form control component */
+.custom-form-control .input-icon {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+}
+
+.feedback {
+    position: absolute;
+    visibility: hidden;
+    bottom: -1.5rem;
+    left: 0;
+}
+
+/* ----- custom-form-control STATES BEGIN -------- */
+
+/* SUCCESS STATE */
+.custom-form-control.success .form__input {
+    outline-color: var(--success);
+}
+
+.custom-form-control.success .input__placeholder {
+    color: var(--success);
+}
+
+.custom-form-control.success .input-icon {
+    color: var(--success);
+}
+
+/* ERROR STATE */
+.custom-form-control.error .form__input {
+    outline-color: var(--error);
+}
+
+.custom-form-control.error .input__placeholder {
+    color: var(--error);
+}
+
+.custom-form-control.error .input-icon {
+    color: var(--error);
+}
+
+.custom-form-control.error .feedback {
+    visibility: visible;
+    color: var(--error);
+}
+/* ----- custom-form-control STATES EN ----------- */
+
+/* Custom checkbox styling begin */
+.custom-check__container {
+    position: relative;
+}
+
+.default-check__input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.custom-checkmark {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.custom-check__container:hover .default-check__input ~ .custom-checkmark {
+    background-color: #ccc;
+}
+
+.custom-check__container .default-check__input:checked ~ .custom-checkmark {
+    background-color: #66a593;
+}
+
+.custom-check__container .custom-checkmark:after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: none;
+}
+
+.custom-check__container
+    .default-check__input:checked
+    ~ .custom-checkmark::after {
+    display: block;
+}
+
+/* Custom checkbox styling end */
+
+/* Submit button styling */
+.form__btn {
+    margin-top: 3rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    border: none;
+    background: #296453;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.form__btn:hover,
+.success__btn:hover {
+    background: #33846d;
+}
+
+a.success__btn:hover {
+    color: #fff;
+}
+
+.form__btn.disabled {
+    background: rgb(134, 199, 181);
+    cursor: default;
+}
+
+.submit__form {
+    padding: 2rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    max-width: 30rem;
+    background-color: #fff;
+}
+
+.password-tip__list {
+    line-height: 1.5;
+}
+
+.img-container {
+    border-radius: 1rem 0 0 1rem;
+    overflow: hidden;
+}
+
+.img-container img {
+    object-fit: cover;
+}
+
+.custom-flex {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1.3fr 1.2fr;
+    max-width: 60rem;
+    min-height: 30rem;
+}
+
+.custom-flex form {
+    align-self: center;
+    padding: 3rem;
+}
+
+fieldset legend {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+    background: #005c54;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-weight: 700;
+}
+
+textarea {
+    resize: none;
+    height: 10rem !important;
+}
+
+@media screen and (max-width: 900px) {
+    .custom-flex {
+        grid-template-columns: 1fr;
+        max-width: 30rem;
+        min-height: auto;
+    }
+
+    .custom-flex form {
+        padding-top: 0;
+    }
+
+    .img-container {
+        border-radius: 1rem 1rem 0 0;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .submit__form {
+        margin: 1rem;
+        padding: 1.5rem;
+        box-shadow: none;
+    }
+}
