@@ -1,0 +1,32 @@
+#form-data {
+    padding: 0 12rem;
+}
+
+#logo {
+    width: 200px;
+}
+
+#bg_right {
+    background: url("../../../assets/img/flayers/BgGreenTextNormal.jpeg")
+        no-repeat center;
+    background-size: cover;
+    text-align: center;
+}
+
+@media (max-width: 1600px) {
+    #form-data {
+        padding: 0 4rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    #form-data {
+        padding: 0 3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #form-data {
+        padding: 0 2rem;
+    }
+}

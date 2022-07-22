@@ -46,11 +46,11 @@ body {
 /* Styles for the inputs of the form */
 .form__input {
     width: 100%;
-    color: currentColor;
+    color: #000;
     padding: 1rem;
     font-size: 1rem;
     border: none;
-    outline: 2px solid currentColor;
+    outline: 2px solid #ccc;
     border-radius: 0.2rem;
 }
 
@@ -67,7 +67,7 @@ body {
     left: 1.2rem;
     font-size: 1rem;
     background-color: #fff;
-    color: #000;
+    color: #ccc;
     transition: top 0.1s ease, font-size 0.1s ease, left 0.1s ease,
         padding 0.1s ease;
 }
@@ -99,6 +99,7 @@ body {
 
 /* Icons inside the form control component */
 .custom-form-control .input-icon {
+    color: #ccc;
     position: absolute;
     top: 50%;
     right: 1rem;

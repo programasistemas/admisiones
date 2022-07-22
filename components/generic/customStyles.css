@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root{
+    --borderInput: #005c54;
+    --selectColor: #5a817e;
+    --bgError: #ffcccc;
+    --bgValid: #ccffcc;
+    --font: "Poppins", sans-serif;
+}
+
+/* Clase para los modales sweet alert que tengan algo especial */
+.swal-wide{ width:1200px !important; }
+
+/*Propiedad, en caso de que se aplique un tooltips este no se sobreponga en el contenido del textarea.*/
+textarea{ padding-right: 20px; }
+.tooltip_helper{ 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 19px;
+    color: #027528;
+    cursor:pointer;
+}
+
+.table-dark{ background: var(--primary) !important; border-color: #048579 !important;}
+li.paginate_button.page-item a { color: var(--primary) }
+li.paginate_button.page-item.active a{ background: var(--primary); border-color: var(--primary); }
+
+#applicants_data .edit:not(:hover){ background: #b5a66b; color: #fff; border-color: #b5a66b }
+#applicants_data .validate:not(:hover){ background: #347790; color: #fff; border-color: #347790 }
+#applicants_data .view:not(:hover){ background: var(--primary); color: #fff; border-color: var(--primary)}
+
+.border-dashed{
+    border-style: dashed !important;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: var(--linearBg);
+    font-family: var(--font);
+    font-weight: 1600;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    min-height:100vh;
+}
+
+
+input[type=text], input[type=email], input[type=date], .form-radio, .form-select, input[type=tel]{
+    /*border: 1px solid var(--borderInput);*/
+    padding-top:10px;
+}
+
+.form-select option[selected]{
+    color:  white;
+    background: #7a868e;
+}
+
+input[type="submit"][disabled]{
+    background:var(--selectColor);
+    border: 1px solid transparent;
+}
+
+.msj{
+    font-size: .8em;
+    display: none;
+    position: relative;
+    color: #900;
+    margin:0;
+}
+
+.checked-valid .msj{
+    display: none;
+    top:-20px;
+    opacity: 0;
+    transition: .2s;
+}
+
+.alert-valid .msj{
+    display:block;
+    top:0;
+    opacity:1;
+    transition: .2s;
+}
+
+/* ------ ARREGLAR PROBLEMA ANCHURA DEL INPUT N_TEL (CELULAR) --------- */
+.intl-tel-input{
+    width: 100%;
+}
+
+.iti {
+    width: 100%;
+}
+
+/* Traigo las imágenes de la libreria tel-input */
+.iti__flag {background-image: url("../../libraries/tel-input/img/flags.png");}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+.iti__flag {background-image: url("../../libraries/tel-input/img/flags@2x.png");}
+}
+.input_file label, .input_file div.form-control { height: 113px; }
+
+
+/*-------- Estilos input[type=file] ---------------*/
+.input_file label, .input_file div{
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    transition: .2s;
+    padding-top: 10px;
+    padding-bottom:10px;
+    overflow: hidden;
+}
+
+.input_file label i, .input_file div i{
+    font-size: 50px;
+}
+
+.input_file label.btn-primary:hover, .input_file div.btn-primary:hover{
+    transition: .2s;
+    background: var(--bs-accordeon);
+    color:#78c2ad;
+}
+
+.show_info_files{
+    z-index:10;
+    color: #a82f3b;
+    top:10px; right:10px; 
+    font-size: 25px;
+    transition: .1s color, .1s font-size; 
+}
+
+.show_info_files:hover{
+    color: #965f64;
+    cursor:pointer;
+    font-size: 27px;
+    transition: .1s color, .1s font-size;    
+}
+
+
+/*----------- advertencias ------------*/
+.alert-valid input, .alert-valid select, .alert-valid textarea,
+.alert-valid input:focus, .alert-valid select:focus, .alert-valid textarea:focus{
+    background-color: var(--bgError);
+    border: 1px solid rgb(90, 3, 3);
+}
+
+.checked-valid input, .checked-valid select, .checked-valid textarea,
+.checked-valid input:focus, .checked-valid select:focus, .checked-valid textarea:focus{
+    background-color: var(--bgValid);
+    border: 1px solid rgb(0, 111, 0);
+}
+
+.form-radio.checked-valid, .form-radio.checked-valid .input__check_placeholder{ 
+    color: rgb(0, 111, 0);
+}
+
+.form-radio.alert-valid, .form-radio.alert-valid .input__check_placeholder{ 
+    color:rgb(90, 3, 3); 
+}
+
+.form-radio.checked-valid input, .form-radio.alert-valid input{ background: none; }
+.form-radio.checked-valid input:checked{ background: #005c54; }
+.form-radio.alert-valid input:checked{ background: rgb(90, 3, 3); }
+
+/*Seteo inputs de tipo file*/
+.input_file.checked-valid label, .input_file.checked-valid div{
+    background: var(--bgValid);
+    border: 1px solid rgb(0, 111, 0);
+    color: rgb(0, 111, 0);
+    box-shadow: 0 0 2px 0 green;
+}
+
+.input_file.checked-valid label:hover, .input_file.checked-valid div:hover { background: #e0dac2; }
+.input_file.alert-valid label:hover, .input_file.alert-valid div:hover { background: #ecc9be; }
+
+.input_file.alert-valid label, .input_file.alert-valid div {
+    background: var(--bgError);
+    border: 1px solid rgb(90, 3, 3);
+    color:rgb(90, 3, 3);
+    box-shadow: 0 0 3px 0 red;
+}
+
+.checked-valid .show_info_files{
+    color: #006f00;
+}
+
+/**---- modal submit */
+.error .modal-content { background:var(--bs-red); }
+.error .modal-header{ color: #fff; }
+.error .modal-body{ background: #fff1f1; }
+
+.success .modal-content { background: #009b6f; }
+.success .modal-header{ color: #fff; }
+.success .modal-body{ background: #fff; }
+
+
+/**---- tratamiento de datos ***/
+#modalTreatment, #modalInfo{
+    text-align: justify;
+}
+
+#dataTreatment ~ strong:hover{
+    cursor:pointer;
+    color:#78c2ad;
+}
+
+
+/** validate data*/
+.btn-files-success, .btn-files-danger{
+    background: #a0a6ab;
+    border: 1px solid #a0a6ab;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    color: #eee;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.btn-files-danger:hover, .btn-files-danger:disabled{
+    background: #bb2d3b;
+    border-color: #bb2d3b;
+}
+
+.btn-files-success:hover, .btn-files-success:disabled{
+    background: #198754;
+    border-color: #198754;
+}

@@ -143,7 +143,7 @@ export function createAlert(json, status = null, callback = null) {
         switch (status) {
             case "success":
                 preValues = {
-                    title: "El proceso ha sido éxitoso",
+                    title: "El proceso ha sido exitoso",
                     confirmButtonColor: "#a5dc86",
                     customClass: {
                         title: "swalertText-Primary",
@@ -198,14 +198,13 @@ export function createAlert(json, status = null, callback = null) {
 //--- Spinners:
 /**
  * Crear un spinner de la forma: <span class="tipo-spinner"><span></span></span>
- * @param {string} classObj clase que contendrá el spinner para ser creado.
- * @return {object} objeto creado con la estructura y la clase.
+ * @param string spinner clase que contendrá el spinner para ser creado.
  */
-export function createSpinner(classObj) {
-    const spinner = document.createElement("span");
-    spinner.appendChild(document.createElement("span"));
-    spinner.classList.add(classObj);
-    return spinner;
+export function createSpinner(spinner) {
+    const spinnerContainer = document.createElement("div");
+    spinnerContainer.className = "loader-bg";
+    spinnerContainer.innerHTML = `<span class="${spinner}"></span>`;
+    return spinnerContainer;
 }
 
 /**
@@ -279,4 +278,15 @@ export function getDatatablesLanguageSettings() {
             previous: "Anterior",
         },
     };
+}
+
+export function handleGenericResponse(response, spinner) {
+    const { message, status } = response,
+        link = response.extras?.redirect || null;
+
+    setTimeout(() => {
+        spinner.remove();
+        createAlert({ text: message }, status);
+        if (link) setTimeout(() => (window.location = link), 1000);
+    }, 1000);
 }

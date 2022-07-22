@@ -1,3 +1,5 @@
+import { createAlert } from "../generic/helpers.js";
+
 // ------------------------------
 // Utility functions
 
@@ -24,7 +26,9 @@ export default function FormValidation(config, expressions) {
             selector: true,
         }),
         formControls = getDOMItems(`#${form} .${config.formControls}`),
-        formInputs = getDOMItems(`#${form} input, #${form} select`),
+        formInputs = getDOMItems(
+            `#${form} input:not([type="hidden"]), #${form} select`
+        ),
         validationObject = Object.fromEntries(
             items.map((item) => [item.id, false])
         );
@@ -111,5 +115,19 @@ export default function FormValidation(config, expressions) {
         getValidityState: () => validityState,
         getFormId: () => form,
         getFormDOMReference: () => getDOMItem(form),
+        objValidation: function () {
+            if (!this.getValidityState()) {
+                createAlert(
+                    {
+                        title: "Formulario comprometido",
+                        text: "El formulario se ha visto comprometido, por lo tanto no se realizarán acciones.",
+                    },
+                    "error"
+                );
+                return true;
+            }
+
+            return false;
+        },
     };
 }

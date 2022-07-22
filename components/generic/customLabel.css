@@ -1,0 +1,83 @@
+.fieldParentLabel {
+    position: relative;
+}
+
+.input__check_placeholder, .input__select_placeholder{
+    position: absolute;
+    top: -1rem;
+    left: 0.2rem;
+    padding: 0.4rem 0.5rem 0rem 0.5rem;
+    
+    background-color: #fff;
+    color: #005c54;
+    font-size: 0.9rem;
+}
+
+
+.input__placeholder {
+    position: absolute;
+    top: .5rem;
+    left: 1.5rem;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #aaa;
+    transition: top 0.1s ease, font-size 0.1s ease, left 0.1s ease,
+      padding 0.1s ease;
+}
+
+.fieldInput:disabled ~ .input__placeholder, .fieldInput:disabled ~ .input__check_placeholder,
+.fieldInput:read-only ~ .input__placeholder, .fieldInput:read-only ~ .input__check_placeholder{
+    background: #e9ecef;
+}
+
+.fieldInput:disabled:not(:placeholder-shown) ~ .input__placeholder, 
+.form-select:disabled ~ .input__select_placeholder {
+    background: linear-gradient(180deg, #fff 58%, #e9ecef 32%);
+}
+
+.fieldInput:focus ~ .input__placeholder,
+.fieldInput:not(:placeholder-shown) ~ .input__placeholder {
+    padding: 0.4rem 0.5rem 0rem 0.5rem;
+    font-size: 0.9rem;
+    left: 1rem;
+    top: -1rem;
+    color: #005c54;
+}
+
+/* Custom placeholder styling being */
+
+.checked-valid .fieldInput:focus  {
+    box-shadow: 0 0 5px 0 green;
+}
+
+.alert-valid .fieldInput:focus {
+    box-shadow: 0 0 5px 0 red;
+}
+
+.checked-valid .input__placeholder{
+    background: var(--bgValid);
+    color: rgb(0, 111, 0);
+}
+.checked-valid .fieldInput:focus ~ .input__placeholder,
+.checked-valid .fieldInput:not(:placeholder-shown) ~ .input__placeholder,
+.checked-valid .input__select_placeholder,
+.checked-valid .input__check_placeholder
+{
+    background: linear-gradient(180deg, #fff 58%, var(--bgValid) 32%);
+    color: rgb(0, 111, 0);
+}
+
+
+.alert-valid .input__placeholder{
+    background: var(--bgError);
+    color:rgb(90, 3, 3);
+}
+
+.alert-valid .fieldInput:focus ~ .input__placeholder,
+.alert-valid .fieldInput:not(:placeholder-shown) ~ .input__placeholder,
+.alert-valid .input__select_placeholder,
+.alert-valid .input__check_placeholder
+{
+    background: linear-gradient(180deg, #fff 58%, var(--bgError) 32%);
+    color:rgb(90, 3, 3);
+}

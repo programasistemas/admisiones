@@ -1,16 +1,11 @@
-const urlArr = window.location.href.split("/");
-if (urlArr.pop() == "index.php") {
-    location.replace(urlArr.join("/"));
-}
-
 import FormValidation from "../../components/form/form.js";
 import {
     createSpinner,
     fetchUrl,
-    createAlert,
-} from "../../components/helpers/helpers.js";
+    handleGenericResponse,
+} from "../../components/generic/helpers.js";
 
-const spinner = createSpinner("spinner_page_load"),
+const spinner = createSpinner("double-loader"),
     validation = FormValidation(
         {
             formId: "loginForm",
@@ -42,12 +37,10 @@ document.getElementById("showPassword").addEventListener("click", function () {
 
 validation.getFormDOMReference().addEventListener("submit", function (e) {
     e.preventDefault();
+    document.body.appendChild(spinner);
+    if (validation.objValidation()) return;
 
-    fetchUrl("loginController.php", new FormData(this))
-        .then((response) => {
-            createAlert({ text: response }, "error");
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+    fetchUrl("login.php", new FormData(this)).then((response) => {
+        handleGenericResponse(response, spinner);
+    });
 });
